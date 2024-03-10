@@ -4,21 +4,21 @@ metadata:
   name: db-deployment
   # namespace: database
   labels:
-    backend: mysql-deploy 
-    env: staging              # Label for the Deployment
+    app: mysql # Label for the Deployment
+    env: staging           
 spec:
-  replicas: 1                 # Number of desired replicas
+  replicas: 1                 
   selector:
     matchLabels:
-      app: mysql              # Selector to match pods managed by this Deployment
+      app: mysql   # Selector to match pods managed by this Deployment
   template:
     metadata:
       labels:
-        app: mysql           # Label for the pods created by this template
+        app: mysql   
     spec:
       containers:
-      - name: mysql          # Container name
-        image: 883752638158.dkr.ecr.us-east-1.amazonaws.com/sql-image:mysql-latest  # Docker image to use
+      - name: mysql          
+        image: 883752638158.dkr.ecr.us-east-1.amazonaws.com/sql-image:mysql-latest  
         env:
         - name: MYSQL_ROOT_PASSWORD
           value: "pw"         # Environment variable for MySQL root password

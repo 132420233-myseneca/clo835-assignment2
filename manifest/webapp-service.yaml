@@ -4,10 +4,10 @@ metadata:
   name: frontend-service
 spec:
   selector:
-    app: flask-app  
+    app: employees
   ports:
     - protocol: TCP
       port: 80  # Port exposed by the service
       targetPort: 8080  # Port on which the Flask app listens
-      nodePort: 30000
+      nodePort: 30000 #the external port
   type: NodePort
