@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-deployment
+  # namespace: database
+  labels:
+    app: mysql # Label for the Deployment
+    env: staging           
+spec:
+  replicas: 1                 
+  selector:
+    matchLabels:
+      app: mysql   # Selector to match pods managed by this Deployment
+  template:
+    metadata:
+      labels:
+        app: mysql   
+    spec:
+      containers:
+      - name: mysql          
+        image: 883752638158.dkr.ecr.us-east-1.amazonaws.com/sql-image:mysql-latest  
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "pw"         # Environment variable for MySQL root password
+        ports:
+        - containerPort: 3306 # Port to expose

@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-deployment
+  # namespace: application
+  labels:
+    app: employees
+    env: staging
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: employees
+  template:
+    metadata:
+      labels:
+        app: employees
+    spec:
+      containers:
+      - name: web-app
+        image: 883752638158.dkr.ecr.us-east-1.amazonaws.com/webapp-image:webapp-latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: DBHOST
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: DBPORT
+          value: "3306"
+        - name: DBUSER
+          value: "root"
+        - name: DATABASE
+          value: "employees"
+        - name: DBPWD
+          value: "pw"
+        - name: APP_COLOR
+          value: "blue"
