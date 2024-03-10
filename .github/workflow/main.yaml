@@ -24,14 +24,14 @@
           run: >
             docker build -t mysql-container -f Dockerfile_mysql .
   
-            docker tag mysql-container:latest ${{ steps.login-ecr.outputs.registry }}/sql-image:mysql-latest
+            docker tag mysql-container:latest ${{ steps.login-ecr.outputs.registry }}/sql-image:mysql-v1
   
-            docker push ${{ steps.login-ecr.outputs.registry }}/sql-image:mysql-latest
+            docker push ${{ steps.login-ecr.outputs.registry }}/sql-image:mysql-v1
         - name: Build and push Web App Docker image
           run: >
             docker build -t web-app-container -f Dockerfile .
   
-            docker tag web-app-container:latest ${{ steps.login-ecr.outputs.registry }}/webapp-image:webapp-latest
+            docker tag web-app-container:latest ${{ steps.login-ecr.outputs.registry }}/webapp-image:webapp-v1
   
-            docker push ${{ steps.login-ecr.outputs.registry }}/webapp-image:webapp-latest
+            docker push ${{ steps.login-ecr.outputs.registry }}/webapp-image:webapp-v1
   
