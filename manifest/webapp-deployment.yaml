@@ -2,10 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: webapp-deployment
-  # namespace: application
-  labels:
-    app: employees
-    env: staging
+  namespace: web
 spec:
   replicas: 3
   selector:
@@ -23,9 +20,7 @@ spec:
         - containerPort: 8080
         env:
         - name: DBHOST
-          valueFrom:
-            fieldRef:
-              fieldPath: status.podIP
+          value: "10.244.0.8"
         - name: DBPORT
           value: "3306"
         - name: DBUSER
@@ -35,4 +30,4 @@ spec:
         - name: DBPWD
           value: "pw"
         - name: APP_COLOR
-          value: "blue"
+          value: "green"

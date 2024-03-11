@@ -2,14 +2,13 @@ apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
   name: webapp-replicaset
-  #namespace: application
+  namespace: web
 spec:
   # The number of replicas to be created
   replicas: 3
   selector:
     matchLabels:
       app: employees
-  # Pod template for replicas
   template:
     # Metadata for the Pods
     metadata:
@@ -36,4 +35,4 @@ spec:
         - name: DBPWD  
           value: "pw"
         - name: APP_COLOR
-          value: "blue"
+          value: "green"

@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: db-deployment
-  # namespace: database
+  namespace: db
   labels:
     app: mysql # Label for the Deployment
     env: staging           

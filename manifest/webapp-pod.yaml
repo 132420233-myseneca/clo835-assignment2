@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: my-web-app
+  namespace: web
   labels:
     app: flask-app
 spec:
@@ -22,4 +23,4 @@ spec:
         - name: DBPWD
           value: "pw"
         - name: APP_COLOR
-          value: "blue"
+          value: "green"
